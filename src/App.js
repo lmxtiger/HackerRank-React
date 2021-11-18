@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useContext } from "react";
+import { Container, Typography, Grow, Grid, Box } from "@material-ui/core";
+import Stage from "./components/Stage.js";
+import * as colors from "@material-ui/core/colors";
+import { StateContext } from "./controllers/state.context";
 
-function App() {
+import useStyles from "./App_styles";
+
+const App = () => {
+  const { box } = useStyles();
+  const { stages } = useContext(StateContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container width="lg">
+      <Box
+        display="flex"
+        justifyContent="space-around"
+        border={2}
+        borderRadius={10}
+        bgcolor="primary.main"
+      >
+        {stages.map((_, idx) => {
+          return <Stage idx={idx} />;
+        })}
+      </Box>
+    </Container>
   );
-}
+};
 
 export default App;

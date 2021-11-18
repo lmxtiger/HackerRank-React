@@ -4,9 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { StateContextProvider } from './controllers/state.context';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StateContextProvider>
+      <App />
+    </StateContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
